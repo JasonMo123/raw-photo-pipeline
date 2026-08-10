@@ -1,0 +1,42 @@
+# ============================================================
+# RAW Photo Pipeline 設定檔
+# ============================================================
+
+paths:
+  nafnet_model: "./models/NAFNet-SIDD-width64.pth"
+  lut_pretrained: "./tools/Image-Adaptive-3DLUT/pretrained_models/sRGB/LUTs.pth"
+  lut_classifier: "./tools/Image-Adaptive-3DLUT/pretrained_models/sRGB/classifier.pth"
+  yunet_model: "./models/face_detection_yunet_2023mar.onnx"
+  realesrgan_exe: "./tools/realesrgan-ncnn-vulkan/realesrgan-ncnn-vulkan.exe"
+  exiftool_exe: "./tools/exiftool.exe"
+
+processing:
+  denoise:
+    enabled: true
+    tile_size: 512
+
+  auto_tone:
+    enabled: true
+    wb_strength: 0.9
+    max_exposure_compensation_ev: 1.5
+
+  color_grade:
+    enabled: true
+
+  upscale:
+    # 預設關閉：放大是整條流程裡最慢的部分，且需要額外的模型/執行檔。
+    # 想要放大的話，在WebUI裡開啟即可，不需要改這裡。
+    enabled: false
+    scale_factor: 2
+    model_name: "realesrgan-x4plus"
+    tile_size: 400
+
+    # 人臉感知：偵測到人臉時，臉部區域改用「傳統/AI混合降級」的保守放大，
+    # 避免通用放大模型對臉部過度銳化/變形。
+    face_aware: true
+    face_detection_confidence: 0.6
+    fallback_face_blend_strength: 0.5
+
+output:
+  jpeg_quality: 95
+  preserve_exif: true

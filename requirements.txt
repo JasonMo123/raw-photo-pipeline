@@ -1,0 +1,33 @@
+# 基礎工具
+pyyaml>=6.0
+tqdm>=4.66
+gradio>=5.0
+
+# 版本鎖定：torch 2.2.2是ABI相容numpy<2的最後一版常見組合，這裡直接鎖定
+# numpy<2 避免torch的C擴充套件在新版numpy上出現「_ARRAY_API not found」錯誤
+numpy<2
+
+# RAW解碼(LibRaw的Python封裝，LGPL 2.1 / CDDL雙授權)
+rawpy>=0.19
+
+# 傳統影像處理 + 人臉偵測(YuNet)。鎖<5是因為5.x開始要求numpy>=2，
+# 會跟上面torch需要的numpy<2衝突(pip會跳警告，雖然實測4.x/5.x在numpy1.26
+# 下都能正常運作，但鎖版本可以讓安裝過程乾淨、不嚇到使用者)
+opencv-python>=4.9,<5
+opencv-contrib-python>=4.9,<5
+
+# 一般影像讀寫
+Pillow>=10.0
+imageio>=2.34
+
+# NAFNet / Image-Adaptive-3DLUT 需要。CUDA版本需搭配本機顯卡驅動，
+# install.bat會依偵測到的CUDA版本安裝對應的wheel。
+torch==2.2.2
+torchvision==0.17.2
+
+# 注意：這裡刻意不列出 gfpgan / basicsr / facexlib / realesrgan(python版)。
+# 這些套件是GFPGAN人臉放大路徑才需要的，而GFPGAN依賴的StyleGAN2/DFDNet元件
+# 授權限定「僅供研究或評測用途」，不適合公開專案內建。放大功能改用
+# Real-ESRGAN的ncnn-vulkan獨立執行檔(BSD-3-Clause，透過download_models.py
+# 下載)，不需要這些Python套件，也就不會有GFPGAN那條依賴鏈常見的
+# numpy版本衝突問題。

@@ -1,0 +1,16 @@
+# 虛擬環境
+.venv/
+
+# 安裝時下載的模型權重/外部工具(download_models.py會自動重新下載)
+models/*.pth
+models/*.onnx
+tools/
+
+# 執行時產生的暫存/工作目錄
+work/
+__pycache__/
+*.pyc
+
+# 使用者自己的測試輸入/輸出(不應該進版控)
+test_input/
+test_output/

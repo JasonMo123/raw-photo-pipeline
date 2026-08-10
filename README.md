@@ -13,15 +13,10 @@ photo ever leaves your computer.
 
 ## 範例 Examples
 
-**高 ISO 降噪 · High-ISO denoising**（ISO 12800，博物館展場無閃光燈拍攝
-· museum exhibit, no flash）
+**高 ISO 降噪 · High-ISO denoising**（ISO 12800，博物館展場無閃光燈拍攝，
+100% 原始像素裁切 · museum exhibit, no flash, 100% pixel crop）
 
 ![High-ISO denoising example](examples/museum_highiso_before_after.jpg)
-
-**AI 調色 + 大圖切塊處理 · AI color grading + large-image tiling**（3000萬
-像素海報照片 · 30-megapixel poster photo）
-
-![Color grading example](examples/poster_before_after.jpg)
 
 ## 功能 Features
 

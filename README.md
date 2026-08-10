@@ -11,6 +11,18 @@ step. Ships with a local web UI — no coding or command-line use required.
 Runs entirely on your own machine (Windows + NVIDIA GPU recommended); no
 photo ever leaves your computer.
 
+## 範例 Examples
+
+**高 ISO 降噪 · High-ISO denoising**（ISO 12800，博物館展場無閃光燈拍攝
+· museum exhibit, no flash）
+
+![High-ISO denoising example](examples/museum_highiso_before_after.jpg)
+
+**AI 調色 + 大圖切塊處理 · AI color grading + large-image tiling**（3000萬
+像素海報照片 · 30-megapixel poster photo）
+
+![Color grading example](examples/poster_before_after.jpg)
+
 ## 功能 Features
 
 - **AI 降噪 · AI Denoising**：採用 [NAFNet](https://github.com/megvii-research/NAFNet)，

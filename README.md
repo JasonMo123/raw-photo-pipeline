@@ -1,12 +1,12 @@
 # RAW Photo Pipeline
-### AI 全自動 RAW 相片批次處理工具 · Automated AI RAW Photo Processing Pipeline
+### 機器學習自動 RAW 相片批次處理工具 · Automated ML RAW Photo Processing Pipeline
 
-批次處理 RAW 相片：AI 降噪、自動白平衡與曝光校正、AI 調色，並提供選用的
+批次處理 RAW 相片：ML 降噪、自動白平衡與曝光校正、3D-LUT調色，並提供選用的
 畫面放大功能。內建網頁介面，無需撰寫程式或使用命令列。完全在本機執行
-（建議搭配 Windows + NVIDIA 顯卡），照片不會上傳至任何伺服器。
+（建議搭配 Windows + NVIDIA 顯卡）。
 
-Batch-processes RAW photos through AI denoising, automatic white balance
-and exposure correction, and AI color grading, with an optional upscaling
+Batch-processes RAW photos through ML denoising, automatic white balance
+and exposure correction, and ML color grading, with an optional upscaling
 step. Ships with a local web UI — no coding or command-line use required.
 Runs entirely on your own machine (Windows + NVIDIA GPU recommended); no
 photo ever leaves your computer.
@@ -20,7 +20,7 @@ photo ever leaves your computer.
 
 ## 功能 Features
 
-- **AI 降噪 · AI Denoising**：採用 [NAFNet](https://github.com/megvii-research/NAFNet)，
+- **ML 降噪 · ML Denoising**：採用 [NAFNet](https://github.com/megvii-research/NAFNet)，
   對高 ISO 雜訊有良好抑制效果；搭配切塊（tiled）推論，大尺寸照片也能在
   消費級顯卡的 VRAM 限制下處理，並修正了常見的圖塊接縫與色塊瑕疵（詳見
   「已知問題與修正記錄」）。
@@ -34,7 +34,7 @@ photo ever leaves your computer.
   演算法，搭配自動色階伸展。
   Gray-world white balance combined with automatic levels stretching.
 
-- **AI 調色 · AI Color Grading**：採用 [Image-Adaptive-3DLUT](https://github.com/HuiZeng/Image-Adaptive-3DLUT)，
+- **3D-LUT 調色 · 3D-LUT Color Grading**：採用 [Image-Adaptive-3DLUT](https://github.com/HuiZeng/Image-Adaptive-3DLUT)，
   依照片內容動態生成 3D LUT，而非套用固定濾鏡。
   Powered by [Image-Adaptive-3DLUT](https://github.com/HuiZeng/Image-Adaptive-3DLUT),
   which generates a 3D LUT dynamically from each photo's content rather
@@ -154,9 +154,9 @@ exposed in the web UI (JPEG quality, upscaling, etc.) cover typical needs.
   as a dedicated face-restoration model.
 
 - **無 NVIDIA 顯卡時處理速度顯著較慢 · Significantly slower without an
-  NVIDIA GPU**：所有 AI 步驟皆仰賴 GPU 加速，CPU-only 模式僅適合驗證
+  NVIDIA GPU**：所有 ML 步驟皆仰賴 GPU 加速，CPU-only 模式僅適合驗證
   流程是否正常，不建議用於大量照片處理。
-  Every AI step relies on GPU acceleration; CPU-only mode is fine for
+  Every ML step relies on GPU acceleration; CPU-only mode is fine for
   verifying the pipeline works, but not recommended for processing large
   batches.
 
@@ -207,15 +207,15 @@ during development:
 
 ## 致謝 Acknowledgements
 
-本專案整合數個既有開源 AI 模型與工具為一套完整的批次處理流程，核心研究
+本專案整合數個既有開源 ML 模型與工具為一套完整的批次處理流程，核心研究
 成果均來自以下專案的原作者：
 
-This project integrates several existing open-source AI models and tools
+This project integrates several existing open-source ML models and tools
 into one batch-processing pipeline; all the underlying research is the
 work of the original authors below:
 
 - [NAFNet](https://github.com/megvii-research/NAFNet)（MIT License）—— 降噪 Denoising
-- [Image-Adaptive-3DLUT](https://github.com/HuiZeng/Image-Adaptive-3DLUT)（Apache 2.0）—— AI 調色 Color grading
+- [Image-Adaptive-3DLUT](https://github.com/HuiZeng/Image-Adaptive-3DLUT)（Apache 2.0）—— ML 調色 Color grading
 - [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN)（BSD-3-Clause）—— 畫面放大 Upscaling
 - [OpenCV Zoo / YuNet](https://github.com/opencv/opencv_zoo)（MIT License）—— 人臉偵測 Face detection
 - [LibRaw](https://www.libraw.org/) / [rawpy](https://github.com/letmaik/rawpy)（LGPL 2.1 / CDDL、MIT）—— RAW 解碼 RAW decoding
